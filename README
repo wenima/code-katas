@@ -115,6 +115,19 @@ def duplicate_elements(m, n):
     return any(x in n for x in m)
 ```
 
+Description: take 2 strings and only take letters in the alphabet and make out of the unique letter the longest word possible
+Difficulty: kyu7
+Module: kata_longest.py
+Tests: test_kata_longest.py
+Link: https://www.codewars.com/kata/two-to-one/train/python
+Most interesting solution/best practice:
+I like one-liners but don't understand how it handles alphabets
+```python
+def duplicate_elements(m, n):
+    return any(x in n for x in m)
+```
+
+
 # Motivation
 
 * the completed coding challenges were part of the Codefellows 401 Python Course snow-day assignment
