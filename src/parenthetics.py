@@ -11,25 +11,25 @@ are not matched by a closing parantheses and should return 1.
 Finally, a string of parantheses is considered balanced if all parantheses are
 matched."""
 
-from dbl_linked_list import DblLinkedList
+from queue import Queue
 
 
 def parse_parentheses(s):
-    ps = DblLinkedList(s[::-1])
-    nodes = ps.generate_list_of_nodes()
-    if nodes[0].value == ')':
-        return -1
-    elif nodes[-1].value == '(':
-        return 1
-    return check_match(nodes)
-
-
-def check_match(nodes):
-    idx_open = [i for i, x in enumerate(nodes) if x.value == '(']
-    idx_closed = [i for i, x in enumerate(nodes) if x.value == ')']
-    if len(idx_open) > len(idx_closed):
-        return 1
-    for i in (range(len(idx_open))):
-        if idx_open[i] > idx_closed[i]:
-            return -1
-    return 0
+    q = Queue(s)
+    status = 0
+    while len(q) > 0:
+        if q.peek() == ')':
+            if status == 0:
+                return -1
+            elif status > 0:
+                q.dequeue()
+                status -= 1
+                continue
+        else:
+            if status == 0:
+                q.dequeue()
+                status += 1
+            else:
+                q.dequeue()
+                status += 1
+    return 1 if status >= 1 else status
