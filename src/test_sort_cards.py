@@ -25,7 +25,15 @@ CARDS = [
 #     assert c1.__lt__(c2) is True
 
 @pytest.mark.parametrize('cards, result', CARDS)
+def test_sort_cards(cards, result):
+    from sort_cards import Card, Deck
+    """Test output of sort_cards using classes."""
+    d = Deck(cards)
+    assert d.sort_cards() == result
+
+
+@pytest.mark.parametrize('cards, result', CARDS)
 def test_sort_cards_using_pq(cards, result):
     from sort_cards_pq import Card, Deck, sort_cards
-    """Test output of sort_cards using a binheap."""
+    """Test output of sort_cards using a PriorityQueue."""
     assert sort_cards(cards) == result

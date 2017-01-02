@@ -1,16 +1,21 @@
 #Summary
 
-* the module parenthetics.py is a weekend assignment / Interview challenge as
-it seems to make for a good practice to do on a whiteboard.
+this repository contains 2 modules:
+* sort_cards.py which contains the code to pass the original [weekend assignment](https://codefellows.github.io/sea-python-401d5/assignments/kata_sort_cards.html) and with the stretchgoal in mind
+* sort_cards_pq.py which contains the code for achieving the stretch goal as described in the link above.
 
-## Descripton of Kata: Write a quick Python function incorporating one of the data structures learned that takes an unicode string as input and returns 3 possible values:
-* Return 1 if the string is “open” (there are open parens that are not closed)
-* Return 0 if the string is “balanced” (there are an equal number of open and closed parentheses in the string)
-* Return -1 if the string is “broken” (a closing parens has not been proceeded by one that opens)
+## Description:
+Write a function sort_cards() that sorts a shuffled list of cards, so that any given list of cards is sorted by rank, no matter the starting collection.
+
+All cards in the list are represented as strings, so that sorted list of cards looks like this:
+
+```
+['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K']
+```
 
 # General comments
 
-* I whiteboarded the solution to split the list in the middle and then work out the matching parantheses inside out but ran into issues and went for a less elegant solution. I'd like to revisit my original approach as I think it would be faster and more elegant.
+* The first solution to just pass the kata should have been way shorter but I started specing out the program with the stretch goal in mind and allowing for also a proper ranked suit to be passed in.
 
 # Test coverage:
 
@@ -21,8 +26,8 @@ it seems to make for a good practice to do on a whiteboard.
 
 | Name                     | Stmts | Miss | Cover | Missing |
 | -----------------------  | ----- | ---- | ----- | ------- |
-| dbl_linked_list.py       |  30   |  0   | 100%  |         |
-| parenthetics.py          |  18   |  0   | 100%  |         |
-| test_paranthetics.py     |   6   |  0   | 100%  |         |
+| sort_cards.py            |  23   |  0   | 100%  |         |
+| sort_cards_pq.py         |  26   |  0   | 100%  |         |
+| test_sort_cards.py       |  17   |  0   | 100%  |         |
 | -----------------------  |  ---  |  --  | ----  | ------- |
-| TOTAL                    |  54   |  6   | 100%  |         |
+| TOTAL                    |  66   |  0   | 100%  |         |
