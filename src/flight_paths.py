@@ -75,18 +75,64 @@ def initialize():
         if k not in g.keys():
             g[airport] = []
 
-#helper functions
+#helper function
 def find_city(city):
-    """Return all indices of occurences of a given City in the list of data."""
     indices = []
     for d in data:
         if d['city'] == city:
             indices.append(data.index(d))
-    return indices if indices else raise KeyError
+    if indices:
+        return indices
+    else:
+        raise KeyError
 
-def random_airport_from_city(city):
-    """Return a randomly selected airport from a given city."""
+def neighbors(n):
+        """Return list of neighbors nodes to node n."""
+        return [edge for edge in g[n]]
+
+#traversal algorithm
+def bfs(start, destination=None):
+        """Launch a bfs search, exploring all nodes."""
+        q = Queue()
+        visited = []
+        return explore_bfs(start, q, visited, destination)
+
+def explore_bfs(node, queue, visited, destination=None):
+        dist = 0
+        has_path = False
+        if node not in visited:
+            visited.append(node)
+            if neighbors(node):
+                for neighbor in neighbors(node):
+                    if neighbor not in visited:
+                        visited.append(neighbor)
+                        dist += g[node][neighbor]
+                        if neighbor in destination:
+                            has_path = True
+                            return visited
+                        queue.enqueue(neighbor)
+                while len(queue):
+                    explore_bfs(queue.dequeue(), queue, visited)
+        return (visited, dist, has_path)
+
+def flight_path(start, destination):
+    start_airports = []
+    destination_airports = []
+    has_path = False
+    for i in find_city(start):
+        start_airports.append(data[i]['airport'])
+    for i in find_city(destination):
+        destination_airports.append(data[i]['airport'])
     try:
-        return data[random.choice(find_city(city))]['airport']
+        for airport in start_airports:
+            returnvalue = bfs(airport, destination_airports )
+            if returnvalue[2]:
+                path, distance, has_path = returnvalue
+                break
     except KeyError:
         return "City has no airport accoring to Wikipedia"
+    if has_path:
+        print("To get from {0} to {1}, we visited the following airports: {2}. The total distance covered was {3}".format(
+    start, destination, path, distance))
+    else:
+        print("There is no path between {0} and {1}.".format(start, destination))
