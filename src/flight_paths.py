@@ -15,6 +15,7 @@ set up the weights of each route.
 
 import math
 import ujson
+from stack import Stack
 
 
 g = {}
@@ -70,6 +71,22 @@ def initialize():
     for k in airports:
         add_edges(k)
     #some airports strangely have no routes or destinations, we will ad them anyway
-    for k in airports.keys():
+    for airport in airports.keys():
         if k not in g.keys():
-            g[k] = []
+            g[airport] = []
+
+#helper functions
+def find_city(city):
+    """Return all indices of occurences of a given City in the list of data."""
+    indices = []
+    for d in data:
+        if d['city'] == city:
+            indices.append(data.index(d))
+    return indices if indices else raise KeyError
+
+def random_airport_from_city(city):
+    """Return a randomly selected airport from a given city."""
+    try:
+        return data[random.choice(find_city(city))]['airport']
+    except KeyError:
+        return "City has no airport accoring to Wikipedia"
