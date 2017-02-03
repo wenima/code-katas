@@ -115,6 +115,18 @@ def duplicate_elements(m, n):
     return any(x in n for x in m)
 ```
 
+Description: Write a function that takes an (unsigned) integer as input, and
+returns the number of bits that are equal to one in the binary representation of
+that number.
+Difficulty: kyu6
+Module: bit_counting.py.py
+Link: https://www.codewars.com/kata/526571aae218b8ee490006f4/train/python
+Most interesting solution/best practice:
+none as best practice is identical to my solution
+
+
+
+
 
 
 
