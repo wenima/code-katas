@@ -124,6 +124,23 @@ Link: https://www.codewars.com/kata/526571aae218b8ee490006f4/train/python
 Most interesting solution/best practice:
 none as best practice is identical to my solution
 
+Description: You have an array of numbers.
+Your task is to sort ascending odd numbers but even numbers must be on their
+places.
+Zero isn't an odd number and you don't need to move it. If you have an empty
+array, you need to return it.
+Difficulty: kyu6
+Module: sort_list_odd.py
+Link: https://www.codewars.com/kata/sort-the-odd/train/python
+Most interesting solution/best practice:
+similar to my solution but used reverse as a keyword argument and list
+comprehension instead of a for loop:
+```python
+def sort_array(arr):
+  odds = sorted((x for x in arr if x%2 != 0), reverse=True)
+  return [x if x%2==0 else odds.pop() for x in arr]
+```
+
 
 
 
