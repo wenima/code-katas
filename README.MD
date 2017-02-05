@@ -141,23 +141,34 @@ def sort_array(arr):
   return [x if x%2==0 else odds.pop() for x in arr]
 ```
 
+Description:
 
+An orderly trail of ants is marching across the park picnic area.
 
+It looks something like this:
 
+```
+..ant..ant.ant...ant.ant..ant.ant....ant..ant.ant.ant...ant..
+```
+But suddenly there is a rumour that a dropped chicken sandwich has been spotted
+on the ground ahead. The ants surge forward! Oh No, it's an ant stampede!!
 
+Some of the slower ants are trampled, and their poor little ant bodies are
+broken up into scattered bits.
 
+The resulting carnage looks like this:
 
-
-
-## Optional at level lower than kyu8
-
-* AreaCalculator.py
-* rockpaperscissors.py
-
-# Motivation
-
-* the completed coding challenges were part of the Codefellows 401 Python Course snow-day assignment
-
-# General comments
-
-*
+```
+...ant...ant..nat.ant.t..ant...ant..ant..ant.anant..t
+```
+Can you find how many ants have died?
+Difficulty: kyu6
+Module: count_dead_ants.py
+Link: https://www.codewars.com/kata/dead-ants/python
+Most interesting solution/best practice:
+I like the naming of the variable for the characters in ant obviously the
+one-liner.
+```python
+def deadAntCount (ants):
+    return max (ants.replace ('ant','').count (bodypart) for bodypart in 'ant')
+```
