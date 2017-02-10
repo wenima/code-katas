@@ -1,0 +1,161 @@
+#Summary
+
+the repository *code-katas* includes the following completed coding challenges
+from the [CodeWars Python challenges] (http://wwww.codewars.com) kyu6 or lower.
+
+# Python coding challenges:
+
+## Details for each kata completed
+* Descripton of Kata: Write a function to split a string and convert it into an
+array of words.
+* Difficulty: kyu8
+* Module: kata_string_to_array
+* Tests: test_katas_8thkyu8.py
+* Link: https://www.codewars.com/kata/convert-a-string-to-an-array/train/python
+* Most interesting solution/best practice:
+```python
+def string_to_array(string):
+    return string.split(" ")
+```
+
+* Description: Given a string of digits, function will replace each char with 0
+if char < 5 or 1 if char >=5
+* Difficulty: kyu8
+* Module: kata_fake_bin.py
+* Tests: test_kata_fake_bin.py
+* Link: https://www.codewars.com/kata/fake-binary/train/python
+* Most interesting solution/best practice:
+```python
+def fake_bin(x):
+    return ''.join('0' if c < '5' else '1' for c in x)
+```
+
+* Description: Create a function that takes an integer as an argument and
+returns "Even" for even numbers or "Odd" for odd numbers.
+* Difficulty: kyu8
+* Module: kata_even_or_odd.py
+* Tests: test_kata_even_or_odd.py
+* Link: https://www.codewars.com/kata/even-or-odd/python
+* Most interesting solution/best practice:
+```python
+def even_or_odd(number):
+  return ["Even", "Odd"][number % 2]
+  ```
+
+* Description: Create a function that consumes an integer and returns an array
+of ints in reversed order
+* Difficulty: kyu8
+* Module: kata_digitize.py
+* Tests: test_kata_digitize.py
+* Link: https://www.codewars.com/kata/convert-number-to-reversed-array-of-digits/python
+Most interesting solution/best practice:
+```python
+def digitize(n):
+    return [int(x) for x in reversed(str(n))]
+```
+
+* Description: Create a function that is given a list which may or may not
+contain another list. Flatten all lists where they exist and return a flattened
+list
+* Difficulty: kyu7
+* Module: kata_flatten_me.py
+* Tests: test_kata_flatten_me.py
+* Link: https://www.codewars.com/kata/flatten-me/python
+Most interesting solution/best practice:
+```python
+def flatten_me(lst):
+    res = []
+    for l in lst:
+        if isinstance(l, list):
+            res.extend(l)
+        else:
+            res.append(l)
+    return res
+```
+
+* Description: Create a function that returns True if the given integer is a
+power of 2, False if it's not
+* Difficulty: kyu7
+* Module: kata_power_of_two.py
+* Tests: test_kata_power_of_two.py
+* Link: https://www.codewars.com/kata/power-of-two/python
+* Most interesting solution/best practice:
+I think my solution is pretty good, other solutions had issues like returning
+True for 0 or readability with bitwise operation.
+
+* Description: Create a function which returns multiples of 2 given numbers
+bound to an upper range
+* Difficulty: kyu7
+* Module: kata_multiples.py
+* Tests: test_kata_multiples.py
+* Link: https://www.codewars.com/kata/show-multiples-of-2-numbers-within-a-range/python
+* Most interesting solution/best practice:
+very clever solution I could not come up with. My solution definitely feels very
+clunky
+```python
+def multiples(s1, s2, s3):
+    return [a for a in xrange(1, s3) if not(a % s1 or a % s2)]
+```
+
+* Description: Create a function which returns True if both lists have one
+common element
+* Difficulty: kyu7
+* Module: kata_duplicate_elements.py
+* Tests: test_kata_duplicate_elements.py
+* Link: https://www.codewars.com/kata/identical-elements
+* Most interesting solution/best practice:
+very clear & readable using generator expression
+```python
+def duplicate_elements(m, n):
+    return any(x in n for x in m)
+```
+
+* Description: Write a function that takes an (unsigned) integer as input, and
+returns the number of bits that are equal to one in the binary representation of
+that number.
+* Difficulty: kyu6
+* Module: bit_counting.py.py
+* Link: https://www.codewars.com/kata/526571aae218b8ee490006f4/train/python
+* Most interesting solution/best practice:
+none as best practice is identical to my solution
+
+* Description: You have an array of numbers. Your task is to sort ascending
+odd numbers but even numbers must be on their places. Zero isn't an odd number
+and you don't need to move it. If you have an empty array, you need to return it.
+* Difficulty: kyu6
+* Module: sort_list_odd.py
+* Link: https://www.codewars.com/kata/sort-the-odd/train/python
+* Most interesting solution/best practice:
+similar to my solution but used reverse as a keyword argument and list
+comprehension instead of a for loop:
+```python
+def sort_array(arr):
+  odds = sorted((x for x in arr if x%2 != 0), reverse=True)
+  return [x if x%2==0 else odds.pop() for x in arr]
+```
+
+* Description: An orderly trail of ants is marching across the park picnic area.
+It looks something like this:
+```
+..ant..ant.ant...ant.ant..ant.ant....ant..ant.ant.ant...ant..
+```
+But suddenly there is a rumor that a dropped chicken sandwich has been spotted
+on the ground ahead. The ants surge forward! Oh No, it's an ant stampede!!
+Some of the slower ants are trampled, and their poor little ant bodies are
+broken up into scattered bits.
+
+The resulting carnage looks like this:
+```
+...ant...ant..nat.ant.t..ant...ant..ant..ant.anant..t
+```
+Can you find how many ants have died?
+Difficulty: kyu6
+Module: count_dead_ants.py
+Link: https://www.codewars.com/kata/dead-ants/python
+Most interesting solution/best practice:
+I like the naming of the variable for the characters in ant and obviously the
+one-liner.
+```python
+def deadAntCount (ants):
+    return max (ants.replace ('ant','').count (bodypart) for bodypart in 'ant')
+```
