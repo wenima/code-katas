@@ -149,13 +149,24 @@ The resulting carnage looks like this:
 ...ant...ant..nat.ant.t..ant...ant..ant..ant.anant..t
 ```
 Can you find how many ants have died?
-Difficulty: kyu6
-Module: count_dead_ants.py
-Link: https://www.codewars.com/kata/dead-ants/python
-Most interesting solution/best practice:
+* Difficulty: kyu6
+* Module: count_dead_ants.py
+* Link: https://www.codewars.com/kata/dead-ants/python
+* Most interesting solution/best practice:
 I like the naming of the variable for the characters in ant and obviously the
 one-liner.
 ```python
 def deadAntCount (ants):
     return max (ants.replace ('ant','').count (bodypart) for bodypart in 'ant')
+```
+
+* Description: Write a function which mix inner characters in each word, first
+and last character stays untouched. Notice that punctuation mark is not a part
+of a word! By word we define only alphanumeric characters.
+* Difficulty: kyu6
+* Module: jumble.py
+* Link: https://www.codewars.com/kata/jumble-words/python
+* Most interesting solution/best practice:
+```python
+import re;jumble=lambda s:re.sub('(\w)'*4,r'\1\3\2\4',s)
 ```
